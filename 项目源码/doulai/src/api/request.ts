@@ -6,8 +6,10 @@ import 'vant/es/notify/style';
 //2.requests就是axios,只不过稍微配置一下
 const requests = axios.create({
     //配置对象
-    //基础路径，发请求的时候，路径当中会出现api，不用你手写
-    baseURL:'http://120.25.127.13:8090/api',
+    //基础路径，发请求的时候，路径当中会出现api
+    //服务器环境:http://120.25.127.13:8090/api
+    //开发环境: http://127.0.0.1:5600/api
+    baseURL:'http://127.0.0.1:5600/api',
     //请求时间超过5秒
     timeout:5000
 });

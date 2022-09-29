@@ -29,6 +29,8 @@ import {defineComponent, ref, Ref} from "vue";
 import router from "@/router";
 import User from "@/Interface/User";
 import { Toast } from "vant";
+import {reqLogin, reqRegistration} from "@/api";
+import store from "@/store";
 
 
 export default defineComponent({
@@ -50,6 +52,7 @@ export default defineComponent({
         } else {
           Toast.fail('用户名填写不合规!');
         }
+        return;
       }
       if (!reg.password.test(user.value.password)) {
         if (user.value.password === '') {
@@ -57,9 +60,39 @@ export default defineComponent({
         } else {
           Toast.fail('密码填写不合规');
         }
+        return;
       }
-      console.log(user.value);
+      let toast = Toast.loading({
+        duration: 0,
+        message: '加载中...',
+        forbidClick: true,
+      });
+      reqRegistration(user.value).then((res: boolean) => {
+        toast.clear();
+        if (!res) {
+          Toast.fail('用户名重复!');
+          return;
+        }
+        Toast.success('注册成功!正在登陆!');
+        login();
+      })
     }
+
+    //登陆
+    const login = (): void => {
+      reqLogin(user.value).then((res: User | "") => {
+        if (res === "") {
+          Toast.fail('账号或密码错误!');
+          return;
+        }
+        store.state.isLogin = true;
+        store.state.User = {...res};
+        Toast.success('登陆成功!');
+        //跳转
+        router.push("/my");
+      })
+    }
+
 
     //路由跳转
     const toLogin = (): void => {
@@ -68,7 +101,7 @@ export default defineComponent({
 
     return {
       user,sub,
-      toLogin,
+      toLogin
     }
   }
 })

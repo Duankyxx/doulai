@@ -6,11 +6,11 @@
       </div>
       <!--表单-->
       <div id="fm">
-        <input type="text" placeholder="账号">
-        <input type="text" placeholder="密码">
+        <input v-model="user.username" type="text" placeholder="账号">
+        <input v-model="user.password" type="text" placeholder="密码">
         <div id="btn">
           <div @click="registration">注册<svg t="1664436669354" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8055" width="200" height="200"><path d="M514.56 71.68a442.88 442.88 0 1 0 442.88 442.88A443.392 443.392 0 0 0 514.56 71.68z m0 814.32576a371.44576 371.44576 0 1 1 371.44576-371.44576 371.8656 371.8656 0 0 1-371.44576 371.44576z m0-657.17248a178.78016 178.78016 0 0 0-178.58048 178.58048 35.71712 35.71712 0 1 0 71.43424 0A107.14624 107.14624 0 1 1 514.56 514.56a35.72224 35.72224 0 0 0-35.71712 35.71712c0 1.024 0.21504 1.97632 0.30208 2.97472-0.08192 0.9984-0.30208 1.96096-0.30208 2.97984v95.83616a35.71712 35.71712 0 1 0 71.43424 0V582.4a178.59072 178.59072 0 0 0-35.71712-353.56672z m1.78688 496.45056a41.67168 41.67168 0 1 0 41.66656 41.67168 41.67168 41.67168 0 0 0-41.66656-41.67168z" fill="#e6e6e6" p-id="8056"></path></svg></div>
-          <div>登陆<svg t="1664436844441" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8323" width="200" height="200"><path d="M488.40192 655.24736a77.96224 77.96224 0 0 1-50.53952-18.432l-104.27904-88.35584A35.328 35.328 0 0 1 379.22816 494.592l104.27392 88.3456a7.74144 7.74144 0 0 0 10.80832-0.81408l179.93216-206.21312a35.328 35.328 0 0 1 53.20704 46.41792l-179.92192 206.208a78.25408 78.25408 0 0 1-59.12576 26.71104zM514.56 952.32a437.76 437.76 0 1 1 437.76-437.76 438.272 438.272 0 0 1-437.76 437.76z m0-804.91008a367.1552 367.1552 0 1 0 367.1552 367.15008 367.56992 367.56992 0 0 0-367.1552-367.15008z" fill="#e6e6e6" p-id="8324"></path></svg></div>
+          <div @click="login">登陆<svg t="1664436844441" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8323" width="200" height="200"><path d="M488.40192 655.24736a77.96224 77.96224 0 0 1-50.53952-18.432l-104.27904-88.35584A35.328 35.328 0 0 1 379.22816 494.592l104.27392 88.3456a7.74144 7.74144 0 0 0 10.80832-0.81408l179.93216-206.21312a35.328 35.328 0 0 1 53.20704 46.41792l-179.92192 206.208a78.25408 78.25408 0 0 1-59.12576 26.71104zM514.56 952.32a437.76 437.76 0 1 1 437.76-437.76 438.272 438.272 0 0 1-437.76 437.76z m0-804.91008a367.1552 367.1552 0 1 0 367.1552 367.15008 367.56992 367.56992 0 0 0-367.1552-367.15008z" fill="#e6e6e6" p-id="8324"></path></svg></div>
         </div>
       </div>
     </div>
@@ -18,12 +18,39 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import {defineComponent, ref, Ref} from "vue";
 import router from "@/router";
+import User from "@/Interface/User";
+import { reqLogin } from "@/api";
+import store from "@/store";
+import {Toast} from "vant";
 
 export default defineComponent({
   name: "Login",
   setup() {
+
+    //用户
+    let user: Ref<User> = ref({
+      id: 0,
+      username: '',
+      password: '',
+      sex: 0,
+    });
+
+    //登陆
+    const login = (): void => {
+      reqLogin(user.value).then((res: User | "") => {
+        if (res === "") {
+          Toast.fail('账号或密码错误!');
+          return;
+        }
+        store.state.isLogin = true;
+        store.state.User = {...res};
+        Toast.success('登陆成功!');
+        //跳转
+        toMy();
+      })
+    }
 
     //路由跳转
     const toMy = (): void => {
@@ -34,7 +61,8 @@ export default defineComponent({
     }
 
     return {
-      toMy,registration
+      user,
+      toMy,registration,login
     }
   }
 })

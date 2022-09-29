@@ -2,6 +2,7 @@ package com.doze.mapper;
 
 import com.doze.pojo.ReqSong;
 import com.doze.pojo.Search;
+import com.doze.pojo.User;
 
 import java.util.List;
 
@@ -15,4 +16,8 @@ public interface DozeMapper {
     //今日推荐
     int recommendedToday();
     Search idSearch(int id);
+
+    void addUser(User user);
+
+    User login(User user);
 }

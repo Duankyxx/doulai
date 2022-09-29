@@ -1,10 +1,7 @@
 package com.doze.controller;
 
 import com.doze.mapper.DozeMapper;
-import com.doze.pojo.ReqSong;
-import com.doze.pojo.Search;
-import com.doze.pojo.Search_content;
-import com.doze.pojo.RequestSong;
+import com.doze.pojo.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -51,6 +48,26 @@ public class Doze {
             searchList.add(mapper.idSearch(i));
         });
         return searchList;
+    }
+
+    //账号注册
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public boolean registration(@RequestBody User user) throws IOException {
+        DozeMapper mapper = GetMapper.getMapper();
+        System.out.println(user);
+        try {
+            mapper.addUser(user);
+            return true;
+        } catch (Exception e) { //异常
+            return false;
+        }
+    }
+
+    //登陆
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public User login(@RequestBody User user) throws IOException {
+        DozeMapper mapper = GetMapper.getMapper();
+        return mapper.login(user);
     }
 
 }
