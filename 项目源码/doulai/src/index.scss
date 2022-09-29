@@ -1,0 +1,31 @@
+* {margin: 0;padding: 0;}
+
+//居中
+.flexCentered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//页面底色
+.White {background-color: #f3f3f3;}
+.Black { }
+.DarkBlue {background-color: #222437FF;}
+.DarkWhite {background-color: #e3e3e3;}
+
+//颜色定义
+.font_black {color: #3f3f3f;}
+
+
+//字体大小定义
+.font_24 {font-size: 24px;}
+.font_20 {font-size: 20px;}
+.font_16 {font-size: 16px;}
+.font_14 {font-size: 14px;}
+
+
+//圆弧
+.borderRadius {border-radius: 20px;}
+
+//卡片阴影效果
+.CardShadow {box-shadow: 0px 0px 15px 0px rgba(63,63,63,0.3)}
