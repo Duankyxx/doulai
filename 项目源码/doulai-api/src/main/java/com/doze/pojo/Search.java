@@ -5,15 +5,17 @@ public class Search {
     String song_name;
     String creator;
     int song_type;
+    int uid;
 
     public Search() {
     }
 
-    public Search(int id, String song_name, String creator, int song_type) {
+    public Search(int id, String song_name, String creator, int song_type, int uid) {
         this.id = id;
         this.song_name = song_name;
         this.creator = creator;
         this.song_type = song_type;
+        this.uid = uid;
     }
 
     public int getId() {
@@ -48,6 +50,14 @@ public class Search {
         this.song_type = song_type;
     }
 
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
+
     @Override
     public String toString() {
         return "Search{" +
@@ -55,6 +65,7 @@ public class Search {
                 ", song_name='" + song_name + '\'' +
                 ", creator='" + creator + '\'' +
                 ", song_type=" + song_type +
+                ", uid=" + uid +
                 '}';
     }
 }

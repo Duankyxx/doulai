@@ -6,6 +6,11 @@
       <div v-for="(i, index) in soundQuality" :key="i.id" class="font_black font_24" id="p">
         {{i.sound_quality}}<p @click="onSelect(i)">标准音质</p><a id="a" @click="addSongList(i)">加入播放列表</a>
       </div>
+
+      <!--加载层-->
+      <div id="Loading" v-show="store.state.isLoading.PopUpSoundQuality">
+        <van-loading size="50" color="#1989fa" />
+      </div>
     </div>
   </van-action-sheet>
 </template>
@@ -22,6 +27,8 @@ import 'vant/es/toast/style';
 export default defineComponent({
   name: "PopUpSoundQuality",
   setup() {
+    //加载层
+    store.state.isLoading.PopUpSoundQuality = false;
     //当前选中的歌曲的音质选项
     let soundQuality: Ref<Array<SoundQuality>> = ref([]);
     //歌名
@@ -35,8 +42,12 @@ export default defineComponent({
       soundQuality.value = [];
       //弹出
       actionShow.value = true;
+      //加载层
+      store.state.isLoading.PopUpSoundQuality = true;
       reqRequestSong(id).then((res: Array<SoundQuality>) => {
         soundQuality.value = [...res];
+        //加载层
+        store.state.isLoading.PopUpSoundQuality = false;
       });
     }
 
@@ -64,7 +75,7 @@ export default defineComponent({
     }
 
     return {
-      soundQuality,actionShow,song_name,
+      soundQuality,actionShow,song_name,store,
       onSelect,requestSong,addSongList
     }
   }

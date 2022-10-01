@@ -70,4 +70,11 @@ public class Doze {
         return mapper.login(user);
     }
 
+    //请求该账户发布的歌曲
+    @RequestMapping(value = "/getMySongs", method = RequestMethod.POST)
+    public List<Search> getMySongs(@RequestBody User user) throws IOException {
+        DozeMapper mapper = GetMapper.getMapper();
+        return mapper.getMySongs(user.getId());
+    }
+
 }

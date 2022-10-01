@@ -26,3 +26,7 @@ export const reqRegistration = (user: User): Promise<any> => {
 export const reqLogin = (user: User): Promise<any> => {
     return requests({url:'/login',method:'post',data: user});
 }
+//请求我已发布歌曲
+export const reqGetMySongs = (user: User): Promise<any> => {
+    return requests({url:'/getMySongs',method:'post',data: user});
+}

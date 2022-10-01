@@ -5,6 +5,8 @@
     <!--个人信息-->
     <User v-if="store.state.isLogin"></User>
 
+    <!--功能列表-->
+    <FunList></FunList>
 
     <!--导航栏-->
     <Navigation></Navigation>
@@ -17,10 +19,11 @@ import Navigation from "@/components/Navigation.vue";
 import store from "@/store";
 import User from "@/components/User.vue";
 import NoLogin from "@/components/NoLogin.vue";
+import FunList from "@/components/FunList.vue";
 
 export default defineComponent({
   name: "My",
-  components: {NoLogin, User, Navigation},
+  components: {FunList, NoLogin, User, Navigation},
   setup() {
     //加载播放器
     store.state.isShowPlayer = false;

@@ -26,4 +26,8 @@
     <select id="login" parameterType="com.doze.pojo.User" resultType="com.doze.pojo.User">
         select * from doulai.user where username=#{username} and password=#{password}
     </select>
+    <!--查询当前用户已发布的歌曲   List<Search> getMySongs(int id);-->
+    <select id="getMySongs" parameterType="com.doze.pojo.User" resultType="com.doze.pojo.Search">
+        select * from doulai.song_list where uid=#{id}
+    </select>
 </mapper>

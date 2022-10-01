@@ -14,6 +14,9 @@
         </div>
       </div>
     </div>
+
+    <!--加载层-->
+    <Loading></Loading>
   </div>
 </template>
 
@@ -24,9 +27,11 @@ import User from "@/Interface/User";
 import { reqLogin } from "@/api";
 import store from "@/store";
 import {Toast} from "vant";
+import Loading from "@/components/Loading.vue";
 
 export default defineComponent({
   name: "Login",
+  components: {Loading},
   setup() {
 
     //用户
@@ -39,6 +44,8 @@ export default defineComponent({
 
     //登陆
     const login = (): void => {
+      //加载层
+      store.state.isShowOverlay = true;
       reqLogin(user.value).then((res: User | "") => {
         if (res === "") {
           Toast.fail('账号或密码错误!');
@@ -47,6 +54,8 @@ export default defineComponent({
         store.state.isLogin = true;
         store.state.User = {...res};
         Toast.success('登陆成功!');
+        //加载层
+        store.state.isShowOverlay = false;
         //跳转
         toMy();
       })

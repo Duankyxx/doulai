@@ -20,4 +20,7 @@ public interface DozeMapper {
     void addUser(User user);
 
     User login(User user);
+
+    //查询当前用户已发布的歌曲
+    List<Search> getMySongs(int id);
 }

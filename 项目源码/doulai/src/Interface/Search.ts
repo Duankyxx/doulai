@@ -3,4 +3,5 @@ export default interface Search {
     song_name: string;
     creator: string;
     song_type: number;
+    uid: number;
 }

@@ -12,6 +12,11 @@
           <!--歌名-->
           <div id="cardSongName" class="font_black">{{i.song_name}}</div>
         </div>
+
+        <!--加载层-->
+        <div id="Loading" v-show="!store.state.isLoading.RecommendedToday">
+          <van-loading size="50" color="#1989fa" />
+        </div>
       </div>
     </div>
 
@@ -25,11 +30,15 @@ import {defineComponent, ref, Ref, watch} from "vue";
 import {reqRecommendedToday} from "@/api";
 import Search from "@/Interface/Search";
 import PopUpSoundQuality from "@/components/PopUpSoundQuality.vue";
+import Loading from "@/components/Loading.vue";
+import store from "@/store";
 
 export default defineComponent({
   name: "RecommendedToday",
-  components: {PopUpSoundQuality},
+  components: {Loading, PopUpSoundQuality},
   setup() {
+    //加载层
+    store.state.isLoading.RecommendedToday = false;
     //是否渲染列表
     let isShowList: Ref<boolean> = ref(false);
     //好歌列表
@@ -48,7 +57,9 @@ export default defineComponent({
         if (i === null) return;
         recommendedList.value[index] = i;
         index++;
-      })
+      });
+      //加载层
+      store.state.isLoading.RecommendedToday = true;
     });
     watch(
         () => recommendedList.value,
@@ -63,7 +74,7 @@ export default defineComponent({
     )
 
     return {
-      recommendedList,isShowList,popUpSoundQuality,
+      recommendedList,isShowList,popUpSoundQuality,store,
       requestSong
     }
   }
@@ -71,6 +82,15 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+#Loading {
+  //outline: 1px solid blue;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #RecommendedToday_box {
   //background-color: aqua;
   width: 100%;

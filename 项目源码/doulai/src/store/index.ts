@@ -6,6 +6,10 @@ export default createStore({
   state: {
     //是否显示遮照层
     isShowOverlay: false,
+    isLoading: {
+      RecommendedToday: false,
+      PopUpSoundQuality: false,
+    },
     //导航栏状态
     navigation: {
       Home: false,

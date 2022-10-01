@@ -12,11 +12,6 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/Search_home.vue'),
   },
   {
-    path: '/my',
-    name: 'My',
-    component: () => import('@/views/My.vue'),
-  },
-  {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/Login.vue'),
@@ -25,6 +20,21 @@ const routes: Array<RouteRecordRaw> = [
     path: '/registration',
     name: 'Registration',
     component: () => import('@/views/Registration.vue'),
+  },
+  {
+    path: '/my',
+    name: 'My',
+    component: () => import('@/views/My.vue'),
+  },
+  {
+    path: '/mySongs',
+    name: 'MySongs',
+    component: () => import('@/views/MySongs.vue'),
+  },
+  {
+    path: '/uploadSongs',
+    name: 'UploadSongs',
+    component: () => import('@/views/UploadSongs.vue'),
   },
 ]
 
