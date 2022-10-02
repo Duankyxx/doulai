@@ -9,7 +9,7 @@
     </select>
     <!--单曲详细List<ReqSong> requestSong(int id);-->
     <select id="requestSong" resultType="com.doze.pojo.ReqSong">
-        select * from doulai.song_list_detailed where id = #{id}
+        select * from doulai.song_list_detailed where uid = #{id}
     </select>
     <!--今日推荐int recommendedToday();  Search idSearch(int id);  -->
     <select id="recommendedToday" resultType="java.lang.Integer">
