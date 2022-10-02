@@ -77,4 +77,19 @@ public class Doze {
         return mapper.getMySongs(user.getId());
     }
 
+    //上传song_list
+    @RequestMapping(value = "/upLoadSongList", method = RequestMethod.POST)
+    public List<Search> upLoad(@RequestBody Search search) throws IOException {
+        DozeMapper mapper = GetMapper.getMapper();
+        mapper.upLoadSongList(search);
+        return  mapper.search(search.getSong_name());
+    }
+
+    //上传song_list_detailed
+    @RequestMapping(value = "/upLoadSongListDetailed", method = RequestMethod.POST)
+    public boolean upLoadSongListDetailed(@RequestBody ReqSong reqSong) throws IOException {
+        DozeMapper mapper = GetMapper.getMapper();
+        mapper.upLoadSongListDetailed(reqSong);
+        return true;
+    }
 }

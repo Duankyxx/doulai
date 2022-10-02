@@ -4,7 +4,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 // 1. 需要的组件
-import { Button, Overlay, Loading, Divider, ActionSheet, Circle, RadioGroup, Radio } from 'vant';
+import { Button, Overlay, Loading, Divider, ActionSheet, Circle, RadioGroup, Radio, Uploader, CellGroup, Field } from 'vant';
 // 2. 引入组件样式
 import 'vant/lib/index.css';
 
@@ -19,4 +19,7 @@ createApp(App)
     .use(Circle)
     .use(RadioGroup)
     .use(Radio)
+    .use(Uploader)
+    .use(CellGroup)
+    .use(Field)
     .mount('#app');

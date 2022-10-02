@@ -23,4 +23,10 @@ public interface DozeMapper {
 
     //查询当前用户已发布的歌曲
     List<Search> getMySongs(int id);
+
+    //上传song_list
+    void upLoadSongList(Search search);
+
+    //上传song_list_detailed
+    void upLoadSongListDetailed(ReqSong reqSong);
 }

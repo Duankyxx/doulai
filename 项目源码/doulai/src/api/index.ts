@@ -1,5 +1,7 @@
 import requests from "@/api/request";
 import User from "@/Interface/User";
+import Search from "@/Interface/Search";
+import SoundQuality from "@/Interface/SoundQuality";
 
 export const reqTest = ()=>{
     //由于前面配置了基础路径，所以不用加/api
@@ -29,4 +31,12 @@ export const reqLogin = (user: User): Promise<any> => {
 //请求我已发布歌曲
 export const reqGetMySongs = (user: User): Promise<any> => {
     return requests({url:'/getMySongs',method:'post',data: user});
+}
+//上传song_list
+export const reqUpLoadSongList = (song_list: Search): Promise<any> => {
+    return requests({url:'/upLoadSongList',method:'post',data: song_list});
+}
+//上传song_list_detailed
+export const reqUpLoadSongListDetailed = (song_list_detailed: SoundQuality): Promise<any> => {
+    return requests({url:'/upLoadSongListDetailed',method:'post',data: song_list_detailed});
 }

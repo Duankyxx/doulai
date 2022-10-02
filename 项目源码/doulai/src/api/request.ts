@@ -9,7 +9,7 @@ const requests = axios.create({
     //基础路径，发请求的时候，路径当中会出现api
     //服务器环境:http://120.25.127.13:8090/api
     //开发环境: http://127.0.0.1:5600/api
-    baseURL:'http://127.0.0.1:5600/api',
+    baseURL:'http://120.25.127.13:8090/api',
     //请求时间超过5秒
     timeout:5000
 });

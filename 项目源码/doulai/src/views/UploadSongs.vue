@@ -1,17 +1,135 @@
 <template>
   <div id="UploadSongs" class="White">
-    <div></div>
+    <!--头-->
+    <Title title="上传歌曲"></Title>
+
+    <!--表单-->
+    <div id="fm">
+      <van-cell-group inset>
+        <!--歌名-->
+        <van-field v-model="songName" label="歌名"></van-field>
+        <van-field label="时长" :model-value="duration" readonly />
+      </van-cell-group>
+
+      <!--文件-->
+      <div id="file">
+        <van-uploader accept="audio/mpeg" :after-read="afterRead">
+          <van-button icon="plus" type="primary">选择文件</van-button>
+        </van-uploader>
+        <van-button type="success" @click="updata" :disabled="isDisabled">确认上传</van-button>
+      </div>
+    </div>
+
+    <!--加载层-->
+    <Loading></Loading>
   </div>
 </template>
 
-<script>
-export default {
-  name: "UploadSongs"
-}
+<script lang="ts">
+import {defineComponent, ref, Ref, watch} from "vue";
+import {uploadSongs} from "@/ali-oss/request";
+import Title from "@/components/Title.vue";
+import Search from "@/Interface/Search";
+import store from "@/store";
+import SoundQuality from "@/Interface/SoundQuality";
+import Loading from "@/components/Loading.vue";
+
+export default defineComponent({
+  name: "UploadSongs",
+  components: {Loading, Title},
+  setup() {
+
+     //文件读取完成后
+     let songName: Ref<string> = ref("");
+     let fileName: Ref<string> = ref("");
+     let data: Ref<any> = ref(null);
+     let duration: Ref<string> = ref("");
+     let isDisabled: Ref<boolean> = ref(false);
+
+     const afterRead = (file: any): void => {
+       data.value = file.file;
+       songName.value = data.value.name;
+       fileName.value = `song_newList/${data.value.name}`;
+       getAudioTime();
+     }
+
+
+     watch(
+         () => data.value,
+         (value) => {
+           value === null ? isDisabled.value=true : isDisabled.value = false;
+         },
+         {deep: true, immediate: true}
+     )
+
+     //获取音频文件的长度
+     const getAudioTime = (): void => {
+       let url = URL.createObjectURL(data.value);
+       let audioElement = new Audio(url);
+       audioElement.addEventListener("loadedmetadata", function () {
+         let dur;
+         dur = (audioElement.duration/60); //3.6
+         let time = Math.round((dur - Math.floor(dur)) * 60);
+         duration.value = addZero(Math.floor(dur)) + ":" + time;
+       });
+     }
+     const addZero = (i: number): string => {
+       if (i <10) {
+         return "0" + i;
+       } else {
+         return ""+i;
+       }
+     }
+
+     //上传
+     const updata = (): void => {
+       //song_list对象
+       const song_list: Search = {
+         id: 0,
+         song_name: songName.value,
+         creator: store.state.User.username,
+         song_type: 0,
+         uid: store.state.User.id,
+       }
+       //song_list_detailed对象
+       const song_list_detailed: SoundQuality = {
+         id: 0,
+         song_name: songName.value,
+         duration: duration.value,
+         url: "",
+         uid: 0,
+         sound_quality: "高品质",
+       }
+       //加载层
+       store.state.isShowOverlay = true;
+       uploadSongs(fileName.value, data.value, song_list, song_list_detailed);
+     }
+
+    return {
+      fileName,duration,songName,data,isDisabled,
+      afterRead,updata
+    }
+   }
+})
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #UploadSongs {
   min-height: 100vh;
+
+  #file {
+    //outline: 1px solid blue;
+    padding: 20px 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+#fm {
+  //outline: 1px solid red;
+  padding: 20px 0;
 }
 </style>

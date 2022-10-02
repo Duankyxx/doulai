@@ -30,4 +30,12 @@
     <select id="getMySongs" parameterType="com.doze.pojo.User" resultType="com.doze.pojo.Search">
         select * from doulai.song_list where uid=#{id}
     </select>
+    <!--上传song_list    void upLoadSongList(Search search);-->
+    <insert id="upLoadSongList" parameterType="com.doze.pojo.Search">
+        insert into doulai.song_list(song_name,creator,song_type,uid) values(#{song_name},#{creator},#{song_type},#{uid})
+    </insert>
+    <!--上传song_list_detailed    void upLoadSongListDetailed(ReqSong reqSong);-->
+    <insert id="upLoadSongListDetailed" parameterType="com.doze.pojo.ReqSong">
+        insert into doulai.song_list_detailed(song_name,duration,url,uid) values(#{song_name},#{duration},#{url},#{uid})
+    </insert>
 </mapper>
