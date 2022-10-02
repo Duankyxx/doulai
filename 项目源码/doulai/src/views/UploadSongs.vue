@@ -33,11 +33,18 @@ import Search from "@/Interface/Search";
 import store from "@/store";
 import SoundQuality from "@/Interface/SoundQuality";
 import Loading from "@/components/Loading.vue";
+import {Notify} from "vant";
+import router from "@/router";
 
 export default defineComponent({
   name: "UploadSongs",
   components: {Loading, Title},
   setup() {
+    //检查登录状态
+    if (store.state.User === undefined) {
+      Notify({ type: 'primary', message: '请先登录!' });
+      router.push("/login");
+    }
 
      //文件读取完成后
      let songName: Ref<string> = ref("");
@@ -46,14 +53,32 @@ export default defineComponent({
      let duration: Ref<string> = ref("");
      let isDisabled: Ref<boolean> = ref(false);
 
+     const clr = (): void => {
+       songName.value = "";
+       fileName.value = "";
+       data.value = null;
+       duration.value = "";
+       isDisabled.value = false;
+     }
+
      const afterRead = (file: any): void => {
        data.value = file.file;
-       songName.value = data.value.name;
+       //去掉特殊关键字
+       songName.value = checkUpKeyWork(data.value.name);
        fileName.value = `song_newList/${data.value.name}`;
        getAudioTime();
      }
 
 
+     //去掉特殊关键字
+    const checkUpKeyWork = (value: string): string => {
+      value = value.replace(".mp3","");
+      value = value.replace(".flac","");
+      value = value.replace(","," ");
+      return value.replace("."," ");
+    }
+
+    //监听
      watch(
          () => data.value,
          (value) => {
@@ -70,7 +95,7 @@ export default defineComponent({
          let dur;
          dur = (audioElement.duration/60); //3.6
          let time = Math.round((dur - Math.floor(dur)) * 60);
-         duration.value = addZero(Math.floor(dur)) + ":" + time;
+         duration.value = addZero(Math.floor(dur)) + ":" + addZero(time);
        });
      }
      const addZero = (i: number): string => {
@@ -103,8 +128,9 @@ export default defineComponent({
        //加载层
        store.state.isShowOverlay = true;
        uploadSongs(fileName.value, data.value, song_list, song_list_detailed);
+       //清空
+       clr();
      }
-
     return {
       fileName,duration,songName,data,isDisabled,
       afterRead,updata

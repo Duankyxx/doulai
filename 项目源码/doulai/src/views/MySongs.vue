@@ -19,11 +19,18 @@ import Title from "@/components/Title.vue";
 import SongList from "@/components/SongList.vue";
 import Search from "@/Interface/Search";
 import Loading from "@/components/Loading.vue";
+import router from "@/router";
+import {Notify} from "vant";
 
 export default defineComponent({
   name: "MySongs",
   components: {Loading, SongList, Title},
   setup() {
+    //检查登录状态
+    if (store.state.User === undefined) {
+      Notify({ type: 'primary', message: '请先登录!' });
+      router.push("/login");
+    }
     //请求我发布的歌曲
     let songList: Ref<Search|null> = ref(null);
     let songListBoolean: Ref<boolean> = ref(false);

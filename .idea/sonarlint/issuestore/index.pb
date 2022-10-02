@@ -65,8 +65,6 @@ w
 G.idea/sonarlint/issuestore/f/6/f640979f4ff37882d48997b4b776cca6ba680287,b/3/b3df857e407df6ad4dc52510239c4d4b6b738284
 P
  项目源码/doulai/package.json,f/c/fc6ff07e9449408bb07ae19696d98865a65e1e95
-M
-项目源码/doulai/yarn.lock,7/1/71305630d075c6cab9c13e7f4860dabd83a03db6
 w
 G.idea/sonarlint/issuestore/d/4/d4b3408ac81d4482e312bca01819e47e51172b23,d/6/d655ec5d4d791581b74a30c316169e3ad42e1b50
 o
@@ -87,8 +85,6 @@ w
 G.idea/sonarlint/issuestore/1/5/151bb9e26d8821576d682f9e963b718e6ba6239f,2/f/2f243f371ea968c406b56644c20da99fed0e282d
 w
 G.idea/sonarlint/issuestore/8/9/893e842d3e1133e11e340bf692c740958cb12f5b,f/0/f0347d824701da1c9c87697a2ca38aea284a85e5
-w
-G.idea/sonarlint/issuestore/0/3/038f2858a25b00a3b6b9cd755fa4ed002e9dcc72,a/4/a484761af44ebaf18e880f44be181b0d1015f345
 w
 G.idea/sonarlint/issuestore/1/7/1754fc9bd599792fca9ea429bfe5e109e2bc11a1,8/9/89e95681d675c7a7a81fb9e587316e6a63786033
 w
@@ -111,21 +107,25 @@ V
 &项目源码/doulai/src/store/index.ts,d/b/dbee0ea032ed1f377203192e609636e5937e66b0
 ^
 .项目源码/doulai/src/components/Loading.vue,c/0/c0ba27d65f1041a5dbc3e6e599d0c05dc266ca91
-W
-'项目源码/doulai/src/views/Login.vue,2/6/262bffda5a7a5da796fe01a7cf20cd4ddd11a0a6
 T
 $项目源码/doulai/src/views/My.vue,b/a/ba84170d40f7f7d6952c0bf987607b3f4645f011
-Y
-)项目源码/doulai/src/views/MySongs.vue,9/1/91470e59713ae8dba0da4c8a50c2a4e4f99608a1
 h
 8项目源码/doulai/src/components/PopUpSoundQuality.vue,4/5/45402e83650d840e3ad16d9ac43bf17a096f7709
 g
 7项目源码/doulai/src/components/RecommendedToday.vue,3/5/356f0659e698bee55bf0744fdcfc6c2c44aaa426
 [
 +项目源码/doulai/src/Interface/Search.ts,e/d/ed9659c39728a5b079d2e18a70558a76cef1ff9b
-_
-/项目源码/doulai/src/components/SongList.vue,3/b/3bead2246e9040d80a58d2f866101bb592c5b9a0
 \
 ,项目源码/doulai/src/components/Title.vue,b/0/b0c1a4ff4322aefb3f7882b8dcef2a77980e49fa
 [
 +项目源码/doulai/src/components/User.vue,6/5/65c1e1f5b6a50a985c183f2eb64b2880300f776d
+�
+j项目源码/doulai-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst,9\f\9f260cfb3367412858f220b706a75ad058410970
+�
+h项目源码/doulai-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst,0\5\058d18136b1df4f45e519a278bfb0c859d78706d
+�
+p项目源码/doulai-api/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst,4\0\40e3c2a6b112eaaf55d7fcc83d87668c13a63ef4
+q
+A项目源码/doulai-api/src/main/resources/mappers/MenuMapper.xml,1\1\11b383cd0f9ce42b7d8343653ee07966599577db
+m
+=项目源码/doulai-api/target/classes/mappers/MenuMapper.xml,7\b\7b6f18f17cdf7b781299fd7b9f4971e868e71368

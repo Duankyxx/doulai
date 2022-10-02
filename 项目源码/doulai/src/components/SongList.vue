@@ -69,7 +69,7 @@ export default defineComponent({
         outline: 1px solid blueviolet;
         width: calc(100% - 20px);
         padding: 0 10px;
-        height: 50%;
+        height: 40%;
         overflow: hidden;
       }
     }

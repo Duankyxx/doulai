@@ -47,6 +47,8 @@ export default defineComponent({
       //加载层
       store.state.isShowOverlay = true;
       reqLogin(user.value).then((res: User | "") => {
+        //加载层
+        store.state.isShowOverlay = false;
         if (res === "") {
           Toast.fail('账号或密码错误!');
           return;
@@ -54,8 +56,6 @@ export default defineComponent({
         store.state.isLogin = true;
         store.state.User = {...res};
         Toast.success('登陆成功!');
-        //加载层
-        store.state.isShowOverlay = false;
         //跳转
         toMy();
       })
