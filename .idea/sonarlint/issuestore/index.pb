@@ -26,10 +26,6 @@ Q
 w
 G.idea/sonarlint/issuestore/6/c/6cc9d7ac2498a4481fbcc98ac0da2c841713b1fb,9/9/99169d87c7f334b9f12abcc2a798d858d29b944d
 w
-G.idea/sonarlint/issuestore/f/9/f9a7efb28e2357f73c52c380291c88e85934f830,9/9/99e7223bf065c22f13552a1599d1b6b87c52bf77
-w
-G.idea/sonarlint/issuestore/e/f/ef14741cb0bdb048e81d0ec4756ad4d68cddac93,7/b/7be3e5c779d212528c93614deeae97b78311ad7b
-w
 G.idea/sonarlint/issuestore/9/7/97f9435deac468e7b50be6d190a8f223f26a82e0,3/9/392ffc5eb33b26551c1a60bdea56a59899671d82
 w
 G.idea/sonarlint/issuestore/2/5/258a6c8f531d3fa17c63d20698b85d50325ba5ad,1/1/11701c93b51a25712edc254b0690263b24d2c9e6
@@ -39,8 +35,6 @@ w
 G.idea/sonarlint/issuestore/5/3/536bf00ac91a0cb9da767d74baae3675c962e7e3,0/2/026b143e5947dc5fd08cd2cf0577f8af92e95c76
 w
 G.idea/sonarlint/issuestore/a/c/ac1de574cd59e79d542601c291eb55d9a0faf666,f/6/f640979f4ff37882d48997b4b776cca6ba680287
-w
-G.idea/sonarlint/issuestore/4/e/4e6f3debd8d20c289fa7aea2b4d28f804da261f5,1/7/1754fc9bd599792fca9ea429bfe5e109e2bc11a1
 w
 G.idea/sonarlint/issuestore/f/c/fc81647b569212a21e2a0f60901bced8394b63f5,d/4/d4b3408ac81d4482e312bca01819e47e51172b23
 w
@@ -137,3 +131,19 @@ _
 /项目源码/doulai/src/components/SongList.vue,3\b\3bead2246e9040d80a58d2f866101bb592c5b9a0
 ]
 -项目源码/doulai/src/views/UploadSongs.vue,0\3\03b2801e3b06c9b906606c18af0d4b6da4f64422
+M
+项目源码/doulai/yarn.lock,7\1\71305630d075c6cab9c13e7f4860dabd83a03db6
+P
+ 项目源码/doulai/package.json,f\c\fc6ff07e9449408bb07ae19696d98865a65e1e95
+O
+项目源码/doulai/src/App.vue,e\f\ef14741cb0bdb048e81d0ec4756ad4d68cddac93
+^
+.项目源码/doulai/src/components/FunList.vue,7\c\7c4482a6bc62b7eb39cf8fe63e69a311b27a79d0
+W
+'项目源码/doulai/src/views/Login.vue,2\6\262bffda5a7a5da796fe01a7cf20cd4ddd11a0a6
+]
+-项目源码/doulai/src/views/Search_home.vue,4\e\4e6f3debd8d20c289fa7aea2b4d28f804da261f5
+e
+5项目源码/doulai/src/components/SearchSongList.vue,f\9\f9a7efb28e2357f73c52c380291c88e85934f830
+Z
+*项目源码/doulai/src/ali-oss/request.ts,5\f\5fbcadffdbba5fb170517b877fe91a44ddbe6228

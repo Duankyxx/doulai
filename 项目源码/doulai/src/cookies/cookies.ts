@@ -13,8 +13,8 @@ interface User {
 //写入
 export const setAccount = (username: string, password: string): void => {
     new Promise((resolve, reject) => {
-        Cookies.set("username", username);
-        Cookies.set("password", password);
+        localStorage.setItem("username", username);
+        localStorage.setItem("password", password);
         return resolve;
     }).then(() => {
         console.log("账号密码保存成功!");
@@ -23,9 +23,9 @@ export const setAccount = (username: string, password: string): void => {
 //读取
 export const getAccount = (): Promise<any> => {
     return new Promise((resolve, reject) => {
-        const username: string|undefined = Cookies.get("username");
-        const password: string|undefined = Cookies.get("password");
-        if (username === undefined || password === undefined) return reject;
+        const username: string|null = localStorage.getItem("username");
+        const password: string|null = localStorage.getItem("password");
+        if (username === null || password === null) return reject;
         return resolve({
             "username": username,
             "password": password
@@ -57,8 +57,8 @@ export const signOut = (): void => {
         title: "确认退出账号吗?",
         message: "下次需要重新登录!",
     }).then(() => {
-        Cookies.remove('username');
-        Cookies.remove('password');
+        localStorage.removeItem("username");
+        localStorage.removeItem("password");
         store.state.isLogin = false;
         store.state.User = undefined;
     });
