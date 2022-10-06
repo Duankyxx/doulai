@@ -151,3 +151,25 @@ w
 G.idea/sonarlint/issuestore/2/6/262bffda5a7a5da796fe01a7cf20cd4ddd11a0a6,6\b\6b414bbd2f510f6ce20bf9ff212a3a2df13a87b3
 Z
 *项目源码/doulai/src/cookies/cookies.ts,7\0\70419b7fcbf1d9445991a0351a8d9c59b4af56c7
+w
+G.idea/sonarlint/issuestore/a/7/a7d5722fe5356bdcd53b4ab217d8624daf9f7edc,6\d\6d0caa4651d7c4cc78b15b84d0d1d93c2adc9556
+w
+G.idea/sonarlint/issuestore/f/3/f34a87278ffdc14e6ceee26d38dd3ec6f635509e,7\8\78ec5698b5be22caba901fd976ebe367b8678a54
+w
+G.idea/sonarlint/issuestore/9/9/99e7223bf065c22f13552a1599d1b6b87c52bf77,7\f\7f1b080ee8b9063dd1baf17c6f5e8b354057a730
+w
+G.idea/sonarlint/issuestore/8/b/8bf9d7dc7f0a9cf3432b7e19d446754ff7dd8843,8\f\8f674fbce4f7095957a7a7977f5b059358000bec
+w
+G.idea/sonarlint/issuestore/7/b/7be3e5c779d212528c93614deeae97b78311ad7b,f\9\f97acb88aec6c0abc22a87282adc6b7a046bf889
+w
+G.idea/sonarlint/issuestore/7/0/70419b7fcbf1d9445991a0351a8d9c59b4af56c7,0\6\06b3076bbb51065947bff29fc3622daeb86f6582
+w
+G.idea/sonarlint/issuestore/6/b/6b414bbd2f510f6ce20bf9ff212a3a2df13a87b3,4\f\4fdccda9ad939c598a6027bce1e79f0a816d2f06
+w
+G.idea/sonarlint/issuestore/1/7/1754fc9bd599792fca9ea429bfe5e109e2bc11a1,8\9\89e95681d675c7a7a81fb9e587316e6a63786033
+V
+&项目源码/doulai/src/store/index.ts,d\b\dbee0ea032ed1f377203192e609636e5937e66b0
+O
+项目源码/doulai/src/main.ts,6\d\6d716089bf9e112c11054c13ed3abc7174fb3ed7
+]
+-项目源码/doulai/src/views/UploadSongs.vue,0\3\03b2801e3b06c9b906606c18af0d4b6da4f64422

@@ -3,11 +3,14 @@
     <div class="wrapper">
       <div class="block">
         <van-circle
+            :speed="0.5"
             :current-rate="store.state.Schedule"
             :size="70"
             :rate="100"
             :color="gradientColor"
             :text="schedule"
+            :stroke-width="60"
+            stroke-linecap="square"
         />
       </div>
     </div>
@@ -25,14 +28,15 @@ export default defineComponent({
     //渐变色对象
     const gradientColor = {
       '0%': '#3fecff',
-      '100%': '#6149f6',
+      '50%': '#6149f6',
+      '100%': '#ff0000'
     };
 
     //监听进度条
     let schedule: Ref<string> = ref("0%");
     watch(
         () => store.state.Schedule,
-        (value) => {
+        (value, oldValue) => {
           schedule.value = value + "%";
         },
         {deep: true}
