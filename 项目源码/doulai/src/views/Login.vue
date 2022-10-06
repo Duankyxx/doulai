@@ -28,6 +28,7 @@ import { reqLogin } from "@/api";
 import store from "@/store";
 import {Toast} from "vant";
 import Loading from "@/components/Loading.vue";
+import {setAccount} from "@/cookies/cookies";
 
 export default defineComponent({
   name: "Login",
@@ -53,9 +54,12 @@ export default defineComponent({
           Toast.fail('账号或密码错误!');
           return;
         }
+        //登录成功
         store.state.isLogin = true;
         store.state.User = {...res};
         Toast.success('登陆成功!');
+        //保存cookie
+        setAccount(user.value.username, user.value.password);
         //跳转
         toMy();
       })

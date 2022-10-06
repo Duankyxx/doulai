@@ -6,6 +6,8 @@
     <van-overlay :show="store.state.isShowOverlay" class="flexCentered"><van-loading color="#1989fa" size="70px" vertical text-size="20px">加载中</van-loading></van-overlay>
     <!--列表-->
     <SearchSongList></SearchSongList>
+    <!--底部挡板-->
+    <div id="bottomBaffle"></div>
   </div>
 </template>
 
@@ -36,5 +38,10 @@ export default {
 <style lang="scss" scoped>
 #Search_home {
   min-height: 100vh;
+}
+#bottomBaffle {
+  //outline: 1px solid blue;
+  width: 100%;
+  height: 70px;
 }
 </style>

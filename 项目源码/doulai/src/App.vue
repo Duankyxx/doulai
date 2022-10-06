@@ -8,12 +8,14 @@
 import { defineComponent } from "vue";
 import SongPlayer from "@/components/SongPlayer.vue";
 import store from "@/store";
+import {loginAccount} from "@/cookies/cookies";
 
 export default defineComponent({
   name: "App",
   components: {SongPlayer},
   setup() {
     store.state.nowPlaySongList.splice(0, 1);
+    loginAccount();
     return {
       store
     }

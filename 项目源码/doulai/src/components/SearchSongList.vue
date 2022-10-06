@@ -40,7 +40,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 #SearchSongList {
   width: 100%;
-  border: 1px solid red;
+  //border: 1px solid red;
   box-sizing: border-box;
 
   //列表
