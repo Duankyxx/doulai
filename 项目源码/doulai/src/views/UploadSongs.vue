@@ -9,6 +9,23 @@
         <!--歌名-->
         <van-field v-model="songName" label="歌名"></van-field>
         <van-field label="时长" :model-value="duration" readonly />
+        <!--选择品质-->
+        <van-field
+            v-model="pickerValue"
+            is-link
+            readonly
+            label="音质"
+            placeholder="选择音质"
+            @click="isShowOverlay = true"
+        />
+        <van-popup :show="isShowOverlay" round position="bottom">
+          <van-picker
+              :columns="columns"
+              :default-index="0"
+              @cancel="isShowOverlay = false"
+              @confirm="onConfirm"
+          />
+        </van-popup>
       </van-cell-group>
 
       <!--文件-->
@@ -21,7 +38,7 @@
     </div>
 
     <!--加载层-->
-    <Loading></Loading>
+    <Schedule></Schedule>
   </div>
 </template>
 
@@ -35,11 +52,21 @@ import SoundQuality from "@/Interface/SoundQuality";
 import Loading from "@/components/Loading.vue";
 import {Notify} from "vant";
 import router from "@/router";
+import Schedule from "@/components/Schedule.vue";
 
 export default defineComponent({
   name: "UploadSongs",
-  components: {Loading, Title},
+  components: {Schedule, Loading, Title},
   setup() {
+    //音质选择
+    const columns = ["标准","高品质"];
+    let isShowOverlay: Ref<boolean> = ref(false);
+    let pickerValue: Ref<string> = ref("标准");
+    let pickerIndex: Ref<number> = ref(0);
+    const onConfirm = (value: string, index: number): void => {
+      pickerValue.value = value;
+      pickerIndex.value = index;
+    }
     //检查登录状态
     if (store.state.User === undefined) {
       Notify({ type: 'primary', message: '请先登录!' });
@@ -113,7 +140,7 @@ export default defineComponent({
          id: 0,
          song_name: songName.value,
          creator: store.state.User.username,
-         song_type: 0,
+         song_type: pickerIndex.value,
          uid: store.state.User.id,
        }
        //song_list_detailed对象
@@ -126,14 +153,14 @@ export default defineComponent({
          sound_quality: "高品质",
        }
        //加载层
-       store.state.isShowOverlay = true;
+       store.state.isShowSchedule = true;
        uploadSongs(fileName.value, data.value, song_list, song_list_detailed);
        //清空
        clr();
      }
     return {
-      fileName,duration,songName,data,isDisabled,
-      afterRead,updata
+      fileName,duration,songName,data,isDisabled,columns,isShowOverlay,pickerValue,
+      afterRead,updata,onConfirm
     }
    }
 })

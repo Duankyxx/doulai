@@ -10,6 +10,9 @@ export default createStore({
       RecommendedToday: false,
       PopUpSoundQuality: false,
     },
+    //进度条层
+    isShowSchedule: false,
+    Schedule: 0,
     //导航栏状态
     navigation: {
       Home: false,
