@@ -12,6 +12,10 @@ export const reqTest = ()=>{
 export const reqSearch = (content: string): Promise<any> => {
     return requests({url:'/search',method:'post',data: {content: content}});
 }
+//精确搜获
+export const reqAccurateSearch = (content: string): Promise<any> => {
+    return requests({url:'/accurateSearch',method:'post',data: {content: content}});
+}
 //请求单曲
 export const reqRequestSong = (id: number): Promise<any> => {
     return requests({url:'/requestSong',method:'post',data: {id: id}});

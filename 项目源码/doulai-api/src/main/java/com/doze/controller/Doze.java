@@ -26,6 +26,13 @@ public class Doze {
         return mapper.search(search_content.getContent());
     }
 
+    //精确搜索accurate
+    @RequestMapping(value = "/accurateSearch", method = RequestMethod.POST)
+    public Search accurateSearch(@RequestBody Search_content search_content) throws IOException {
+        DozeMapper mapper = GetMapper.getMapper();
+        return mapper.accurateSearch(search_content.getContent());
+    }
+
     //请求单曲播放
     @RequestMapping(value = "/requestSong", method = RequestMethod.POST)
     public List<ReqSong> requestSong(@RequestBody RequestSong requestSong) throws IOException {

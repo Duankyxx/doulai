@@ -7,7 +7,7 @@ import {Notify, Toast} from "vant";
 
 const OSS = require('ali-oss');
 //实例化OSS
-const client = new OSS({
+export const client = new OSS({
     // yourRegion填写Bucket所在地域。以华东1（杭州）为例，yourRegion填写为oss-cn-hangzhou。
     region: 'XXX',
     // 从STS服务获取的临时访问密钥（AccessKey ID和AccessKey Secret）

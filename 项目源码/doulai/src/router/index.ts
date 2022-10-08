@@ -36,6 +36,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'UploadSongs',
     component: () => import('@/views/UploadSongs.vue'),
   },
+  {
+    path: '/batchUploadSongs',
+    name: 'BatchUploadSongs',
+    component: () => import('@/views/BatchUploadSongs.vue'),
+  },
 ]
 
 const router = createRouter({

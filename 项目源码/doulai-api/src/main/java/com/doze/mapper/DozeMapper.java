@@ -9,6 +9,8 @@ import java.util.List;
 public interface DozeMapper {
     //搜索歌曲列表
     List<Search> search(String content);
+    //精确搜索
+    Search accurateSearch(String content);
 
     //单曲详细
     List<ReqSong> requestSong(int id);

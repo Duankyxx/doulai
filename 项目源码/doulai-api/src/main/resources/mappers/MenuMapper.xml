@@ -3,9 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.doze.mapper.DozeMapper">
-    <!--搜索void search(String content);-->
+    <!--搜索List<Search> search(String content);-->
     <select id="search" resultType="com.doze.pojo.Search">
         select * from doulai.song_list where song_name like '%' #{content} '%'
+    </select>
+    <!--精确搜索Search accurateSearch(String content);-->
+    <select id="accurateSearch" resultType="com.doze.pojo.Search">
+        select * from doulai.song_list where song_name = #{content}
     </select>
     <!--单曲详细List<ReqSong> requestSong(int id);-->
     <select id="requestSong" resultType="com.doze.pojo.ReqSong">

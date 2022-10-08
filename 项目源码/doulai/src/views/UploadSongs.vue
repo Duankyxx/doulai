@@ -1,7 +1,11 @@
 <template>
   <div id="UploadSongs" class="White">
     <!--头-->
-    <Title title="上传歌曲"></Title>
+    <Title title="上传歌曲">
+      <template #default>
+        <van-button id="right" to="batchUploadSongs" plain type="success" size="small" round>批量</van-button>
+      </template>
+    </Title>
 
     <!--表单-->
     <div id="fm">
@@ -30,7 +34,7 @@
 
       <!--文件-->
       <div id="file">
-        <van-uploader accept="audio/mpeg" :after-read="afterRead">
+        <van-uploader accept="audio/*" :after-read="afterRead">
           <van-button icon="plus" type="primary">选择文件</van-button>
         </van-uploader>
         <van-button type="success" @click="updata" :disabled="isDisabled">确认上传</van-button>
@@ -39,6 +43,8 @@
 
     <!--加载层-->
     <Schedule></Schedule>
+    <!--Loading-->
+    <Loading></Loading>
   </div>
 </template>
 
@@ -50,9 +56,10 @@ import Search from "@/Interface/Search";
 import store from "@/store";
 import SoundQuality from "@/Interface/SoundQuality";
 import Loading from "@/components/Loading.vue";
-import {Notify} from "vant";
+import {Notify, Toast} from "vant";
 import router from "@/router";
 import Schedule from "@/components/Schedule.vue";
+import {reqAccurateSearch} from "@/api";
 
 export default defineComponent({
   name: "UploadSongs",
@@ -134,7 +141,16 @@ export default defineComponent({
      }
 
      //上传
-     const updata = (): void => {
+     const updata = async (): Promise<void> => {
+       //检查是否有重复
+       store.state.isShowOverlay = true;
+       const res = await reqAccurateSearch(songName.value);
+       store.state.isShowOverlay = false;
+       if (res !== "") {
+         Toast.fail('有重复歌名');
+         return;
+       }
+
        //song_list对象
        const song_list: Search = {
          id: 0,
@@ -154,7 +170,8 @@ export default defineComponent({
        }
        //加载层
        store.state.isShowSchedule = true;
-       uploadSongs(fileName.value, data.value, song_list, song_list_detailed);
+       //向阿里云发送及其同步
+       await uploadSongs(fileName.value, data.value, song_list, song_list_detailed);
        //清空
        clr();
      }
@@ -184,5 +201,12 @@ export default defineComponent({
 #fm {
   //outline: 1px solid red;
   padding: 20px 0;
+}
+
+#right {
+  z-index: 999;
+  position: absolute;
+  top: calc(50% - 16px);
+  right: 10px;
 }
 </style>

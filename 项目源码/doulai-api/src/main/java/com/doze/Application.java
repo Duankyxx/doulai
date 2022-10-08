@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
     public static void main(String[] args) {
-        System.getProperties().put("server.port", 8090);
+        System.getProperties().put("server.port", 9000);
         SpringApplication.run(Application.class,args);
     }
 }
