@@ -45,8 +45,6 @@ i
 .项目源码/doulai/src/views/Registration.vue,e/8/e8b3a05fb76b65a16f77821b4e4fe05ba0df0319
 w
 G.idea/sonarlint/issuestore/f/6/f640979f4ff37882d48997b4b776cca6ba680287,b/3/b3df857e407df6ad4dc52510239c4d4b6b738284
-w
-G.idea/sonarlint/issuestore/d/4/d4b3408ac81d4482e312bca01819e47e51172b23,d/6/d655ec5d4d791581b74a30c316169e3ad42e1b50
 o
 ?项目源码/doulai-api/src/main/java/com/doze/pojo/Search.java,2/7/276170f096d3c22aad442461e143fc207d00a07d
 w
@@ -118,13 +116,9 @@ G.idea/sonarlint/issuestore/2/6/262bffda5a7a5da796fe01a7cf20cd4ddd11a0a6,6\b\6b
 Z
 *项目源码/doulai/src/cookies/cookies.ts,7\0\70419b7fcbf1d9445991a0351a8d9c59b4af56c7
 w
-G.idea/sonarlint/issuestore/a/7/a7d5722fe5356bdcd53b4ab217d8624daf9f7edc,6\d\6d0caa4651d7c4cc78b15b84d0d1d93c2adc9556
-w
 G.idea/sonarlint/issuestore/f/3/f34a87278ffdc14e6ceee26d38dd3ec6f635509e,7\8\78ec5698b5be22caba901fd976ebe367b8678a54
 w
 G.idea/sonarlint/issuestore/9/9/99e7223bf065c22f13552a1599d1b6b87c52bf77,7\f\7f1b080ee8b9063dd1baf17c6f5e8b354057a730
-w
-G.idea/sonarlint/issuestore/8/b/8bf9d7dc7f0a9cf3432b7e19d446754ff7dd8843,8\f\8f674fbce4f7095957a7a7977f5b059358000bec
 w
 G.idea/sonarlint/issuestore/7/b/7be3e5c779d212528c93614deeae97b78311ad7b,f\9\f97acb88aec6c0abc22a87282adc6b7a046bf889
 w
@@ -167,8 +161,6 @@ w
 G.idea/sonarlint/issuestore/1/f/1f589a85876e625ab31eedf7615f386062929276,5\4\54d39fa03adf3ccfab2d5891252e5babf8743a29
 w
 G.idea/sonarlint/issuestore/0/9/0954e0901105f1943e44f1da976871a888b0be92,b\1\b11aecd31e8d90bef2cae5a613a025f192a3663d
-w
-G.idea/sonarlint/issuestore/0/3/038f2858a25b00a3b6b9cd755fa4ed002e9dcc72,a\4\a484761af44ebaf18e880f44be181b0d1015f345
 w
 G.idea/sonarlint/issuestore/b/7/b73d563598204ab0a60623f47872127c20d8ebb8,e\b\eb22dea2504e3c13af21092bd605f36c846952a2
 w
