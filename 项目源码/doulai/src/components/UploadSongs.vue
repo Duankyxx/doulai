@@ -25,15 +25,15 @@
     </van-cell-group>
 
     <!--加载  isShowLoading-->
-    <div id="Loading" class="flexCentered" v-show="isShowLoading">
-      <van-loading v-show="!isShowHint" vertical size="50px" color="#1989fa" text-color="#0094ff" text-size="20px">生成任务中...</van-loading>
-      <div class="hint" v-show="isShowHint">
+    <div id="Loading" class="flexCentered" v-if="isShowLoading">
+      <van-loading v-if="!isShowHint" vertical size="50px" color="#1989fa" text-color="#0094ff" text-size="20px">生成任务中...</van-loading>
+      <div class="hint anim" v-if="isShowHint">
         库重复
       </div>
     </div>
     <!--加载  isShow-->
-    <div id="Circle" class="flexCentered" v-show="isShowCircle">
-      <div class="hint" v-show="!isShowUploadMsg">
+    <div id="Circle" class="flexCentered" v-if="isShowCircle">
+      <div class="hint anim2" v-if="!isShowUploadMsg">
         <van-circle
             :current-rate="currentRate"
             :rate="100"
@@ -42,7 +42,7 @@
             :stroke-width="60"
         />
       </div>
-      <div class="hint" v-show="isShowUploadMsg">
+      <div class="hint anim" v-if="isShowUploadMsg">
         {{uploadMsg}}
       </div>
     </div>
@@ -53,10 +53,10 @@
 import {defineComponent, ref, Ref, watch} from "vue";
 import store from "@/store";
 import {reqAccurateSearch, reqUpLoadSongList, reqUpLoadSongListDetailed} from "@/api";
-import {Notify, Toast} from "vant";
 import Search from "@/Interface/Search";
 import SoundQuality from "@/Interface/SoundQuality";
 import {client} from "@/ali-oss/request";
+import Tools from "@/Tools/Tools";
 
 export default defineComponent({
   name: "UploadSongs",
@@ -64,21 +64,6 @@ export default defineComponent({
   setup(props, content) {
     const data: Ref<any> = ref(props.data);
 
-    //去掉特殊关键字
-    const checkUpKeyWork = (value: string): string => {
-      value = value.replace(".mp3","");
-      value = value.replace(".flac","");
-      value = value.replace(","," ");
-      return value.replace("."," ");
-    }
-    //添加0
-    const addZero = (i: number): string => {
-      if (i <10) {
-        return "0" + i;
-      } else {
-        return ""+i;
-      }
-    }
     //获取音频长度
     const getAudioTime = (file: any): void => {
       let url = URL.createObjectURL(file);
@@ -87,14 +72,14 @@ export default defineComponent({
         let dur;
         dur = (audioElement.duration/60); //3.6
         let time = Math.round((dur - Math.floor(dur)) * 60);
-        duration.value = addZero(Math.floor(dur)) + ":" + addZero(time);
+        duration.value = Tools.addZero(Math.floor(dur)) + ":" + Tools.addZero(time);
       });
     }
 
     //单曲信息
     let isShowOverlay: Ref<boolean> = ref(false);
     const columns = ["标准","高品质"];
-    let songName: Ref<string> = ref(checkUpKeyWork(data.value.file.name));
+    let songName: Ref<string> = ref(Tools.checkUpKeyWork(data.value.file.name));
     let fileName: Ref<string> = ref(`song_newList/${data.value.file.name}`);
     let duration: Ref<string> = ref("");
     let pickerValue: Ref<string> = ref("标准");
@@ -272,6 +257,44 @@ export default defineComponent({
       align-items: center;
       border-radius: 14px;
     }
+  }
+}
+
+.anim {
+  animation: Anim 1s ease-in-out 1s forwards;
+}
+@keyframes Anim {
+  0% {
+
+  }
+  80% {
+    height: 90%;
+    width: 90px;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    height: 80%;
+    width: 80px;
+    margin-left: calc(100% - 120px);
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+  }
+}
+.anim2 {
+  animation: Anim2 3s ease-in-out forwards infinite;
+}
+@keyframes Anim2 {
+  0% {
+    width: 80px;
+    height: 80px;
+  }
+  50% {
+    width: 100px;
+    height: 100px;
+  }
+  100% {
+    width: 80px;
+    height: 80px;
   }
 }
 </style>

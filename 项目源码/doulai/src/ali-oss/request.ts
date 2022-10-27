@@ -9,12 +9,12 @@ const OSS = require('ali-oss');
 //实例化OSS
 export const client = new OSS({
     // yourRegion填写Bucket所在地域。以华东1（杭州）为例，yourRegion填写为oss-cn-hangzhou。
-    region: 'XXX',
+    region: 'oss-cn-hangzhou',
     // 从STS服务获取的临时访问密钥（AccessKey ID和AccessKey Secret）
-    accessKeyId: 'XXX',
-    accessKeySecret: 'XXX',
+    accessKeyId: 'LTAI5tRAKF726nzND4gSzkix',
+    accessKeySecret: 'wsy0U5QTBASaQ2khxhmbQBLkVM2jFu',
     // 填写Bucket名称。
-    bucket: 'XXX'
+    bucket: 'udnsunusn'
 });
 //设置分片上传参数
 const options = {

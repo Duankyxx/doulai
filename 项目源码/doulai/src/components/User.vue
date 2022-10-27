@@ -73,6 +73,7 @@ export default defineComponent({
     padding: 5px;
     width: 90%;
     height: 150px;
+    overflow: hidden;
 
     &>div {width: calc(100% - 10px);height: calc(50% - 10px);padding: 5px}
 
@@ -143,6 +144,29 @@ export default defineComponent({
     #bottom {
       //outline: 1px solid blue;
     }
+  }
+}
+
+.userAnim {
+  animation: UserAnim 1s ease-in-out forwards;
+}
+.user_boxAnim {
+  animation: UserAnim2 1s ease-in-out forwards;
+}
+@keyframes UserAnim {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 150px;
+  }
+}
+@keyframes UserAnim2 {
+  0% {
+    height: 110px;
+  }
+  100% {
+    height: 200px;
   }
 }
 </style>

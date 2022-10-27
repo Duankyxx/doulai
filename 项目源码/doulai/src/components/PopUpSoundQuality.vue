@@ -55,6 +55,7 @@ export default defineComponent({
     const onSelect = (i: Ref<SoundQuality>): void => {
       store.state.nowPlaySong = {...i};
       actionShow.value = false;
+      store.state.PlayerPause = false;
 
       //加入歌单
       store.state.nowPlaySongList.push(i);

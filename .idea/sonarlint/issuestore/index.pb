@@ -11,8 +11,6 @@ a
 .项目源码/doulai/src/components/NoLogin.vue,d/8/d876cbfa1cc36ba7b9f0440914fb55d6f18effd5
 U
 %项目源码/doulai/postcss.config.js,4/d/4dd9acd87773e6b70cf1d87557c6f79998fbb90a
-]
--项目源码/doulai/src/components/Search.vue,f/c/fc81647b569212a21e2a0f60901bced8394b63f5
 a
 1项目源码/doulai/src/components/SongPlayer.vue,6/c/6cc9d7ac2498a4481fbcc98ac0da2c841713b1fb
 a
@@ -55,8 +53,6 @@ o
 ?项目源码/doulai-api/src/main/java/com/doze/pojo/Search.java,2/7/276170f096d3c22aad442461e143fc207d00a07d
 w
 G.idea/sonarlint/issuestore/e/8/e8b3a05fb76b65a16f77821b4e4fe05ba0df0319,c/b/cb7630cb218420dc7457425ea0ea9ae46be87353
-U
-%项目源码/doulai/package-lock.json,6/b/6b71940e61c9aaf76cdf8941b7cc33ef2ba36650
 w
 G.idea/sonarlint/issuestore/2/8/2816aab1718b164239e9af261d02eeab9e220ea6,3/b/3b98b684dd4d259bdeaf027437f9d65f285b8cfa
 w
@@ -81,14 +77,10 @@ G.idea/sonarlint/issuestore/1/1/11701c93b51a25712edc254b0690263b24d2c9e6,8/b/8b
 .项目源码/doulai/src/components/Loading.vue,c/0/c0ba27d65f1041a5dbc3e6e599d0c05dc266ca91
 T
 $项目源码/doulai/src/views/My.vue,b/a/ba84170d40f7f7d6952c0bf987607b3f4645f011
-h
-8项目源码/doulai/src/components/PopUpSoundQuality.vue,4/5/45402e83650d840e3ad16d9ac43bf17a096f7709
 g
 7项目源码/doulai/src/components/RecommendedToday.vue,3/5/356f0659e698bee55bf0744fdcfc6c2c44aaa426
 [
 +项目源码/doulai/src/Interface/Search.ts,e/d/ed9659c39728a5b079d2e18a70558a76cef1ff9b
-[
-+项目源码/doulai/src/components/User.vue,6/5/65c1e1f5b6a50a985c183f2eb64b2880300f776d
 �
 j项目源码/doulai-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst,9\f\9f260cfb3367412858f220b706a75ad058410970
 �
@@ -98,10 +90,6 @@ p项目源码/doulai-api/target/maven-status/maven-compiler-plugin/testCompile/d
 w
 G.idea/sonarlint/issuestore/9/f/9f260cfb3367412858f220b706a75ad058410970,6\e\6ea60edd2737646056d8e8bba12cdbbf8fd35ebd
 w
-G.idea/sonarlint/issuestore/7/b/7b6f18f17cdf7b781299fd7b9f4971e868e71368,f\3\f3f148da66853b4f4682ab72360132fc275984bf
-w
-G.idea/sonarlint/issuestore/1/1/11b383cd0f9ce42b7d8343653ee07966599577db,c\e\ce85ca4d4a38cbee2de2d4e5351cf5241dcff86a
-w
 G.idea/sonarlint/issuestore/0/5/058d18136b1df4f45e519a278bfb0c859d78706d,5\a\5a2a84dd9de55088fe0038ff0e6cefcef72f5e0f
 w
 G.idea/sonarlint/issuestore/4/0/40e3c2a6b112eaaf55d7fcc83d87668c13a63ef4,2\e\2e5d108254a861cfe477522116bbb7b56e0e99ff
@@ -109,10 +97,6 @@ V
 &项目源码/doulai/src/api/request.ts,b\a\ba02d6f2162f57eb0f892506936eeba8cf67f8a8
 _
 /项目源码/doulai/src/components/SongList.vue,3\b\3bead2246e9040d80a58d2f866101bb592c5b9a0
-M
-项目源码/doulai/yarn.lock,7\1\71305630d075c6cab9c13e7f4860dabd83a03db6
-P
- 项目源码/doulai/package.json,f\c\fc6ff07e9449408bb07ae19696d98865a65e1e95
 O
 项目源码/doulai/src/App.vue,e\f\ef14741cb0bdb048e81d0ec4756ad4d68cddac93
 ^
@@ -157,8 +141,6 @@ w
 G.idea/sonarlint/issuestore/1/7/1754fc9bd599792fca9ea429bfe5e109e2bc11a1,8\9\89e95681d675c7a7a81fb9e587316e6a63786033
 V
 &项目源码/doulai/src/store/index.ts,d\b\dbee0ea032ed1f377203192e609636e5937e66b0
-O
-项目源码/doulai/src/main.ts,6\d\6d716089bf9e112c11054c13ed3abc7174fb3ed7
 w
 G.idea/sonarlint/issuestore/7/8/78ec5698b5be22caba901fd976ebe367b8678a54,d\b\dbc1e792c96dfc431d1a1a3e957315887d65382f
 w
@@ -179,3 +161,39 @@ w
 G.idea/sonarlint/issuestore/6/d/6d0caa4651d7c4cc78b15b84d0d1d93c2adc9556,b\7\b73d563598204ab0a60623f47872127c20d8ebb8
 _
 /项目源码/doulai/src/components/Schedule.vue,0\9\0954e0901105f1943e44f1da976871a888b0be92
+u
+E项目源码/doulai-api/src/main/java/com/doze/mapper/DozeMapper.java,d\6\d63360ed1fcaf79ebc7cc80abe626cc13af2c88b
+o
+?项目源码/doulai-api/src/main/java/com/doze/Application.java,1\6\16bea4d9da81566625808a17aacb779563cf30ab
+w
+G.idea/sonarlint/issuestore/d/b/dbc1e792c96dfc431d1a1a3e957315887d65382f,a\4\a4b551805c3e17e96deea88753c0a220f7349d2a
+w
+G.idea/sonarlint/issuestore/4/e/4e31421f573db33de5262c0584fcaf1effd992e7,7\7\773cca86598bd17b518fcac8afc0450e814ceb60
+w
+G.idea/sonarlint/issuestore/4/5/45ee50a88d2e8cdcaa92b6bdf7a18ceb0150dc6a,7\a\7ac59414775ba08d3ad1e74eb419fc55d8ed936f
+w
+G.idea/sonarlint/issuestore/1/f/1f589a85876e625ab31eedf7615f386062929276,5\4\54d39fa03adf3ccfab2d5891252e5babf8743a29
+w
+G.idea/sonarlint/issuestore/0/9/0954e0901105f1943e44f1da976871a888b0be92,b\1\b11aecd31e8d90bef2cae5a613a025f192a3663d
+w
+G.idea/sonarlint/issuestore/0/3/038f2858a25b00a3b6b9cd755fa4ed002e9dcc72,a\4\a484761af44ebaf18e880f44be181b0d1015f345
+w
+G.idea/sonarlint/issuestore/b/7/b73d563598204ab0a60623f47872127c20d8ebb8,e\b\eb22dea2504e3c13af21092bd605f36c846952a2
+w
+G.idea/sonarlint/issuestore/a/a/aac5e77083704f2b2a18865d55f5b752ba6a15bd,7\c\7cb6d4043fcfb881e7a76855e3fa8b1ff445fb10
+w
+G.idea/sonarlint/issuestore/c/4/c452f57bc2a882390ad519787cf143534e245754,4\2\42c79e2fde6e887fbc9d1d858c12b9f90c140101
+w
+G.idea/sonarlint/issuestore/8/0/800ba914a1519081e8b42783217922132072d380,1\b\1b9430d6c24f8a641ea4156f354b7f0a0fedcb29
+T
+$项目源码/doulai/src/api/index.ts,3\0\304c4fc47d454376bb2b17f52376a9c3c2d2b801
+W
+'项目源码/doulai/src/router/index.ts,8\f\8f2721a50aceb14e71339a79e0dfaf16889a1c23
+q
+A项目源码/doulai-api/src/main/resources/mappers/MenuMapper.xml,1\1\11b383cd0f9ce42b7d8343653ee07966599577db
+m
+=项目源码/doulai-api/target/classes/mappers/MenuMapper.xml,7\b\7b6f18f17cdf7b781299fd7b9f4971e868e71368
+Y
+)项目源码/doulai/src/views/MySongs.vue,9\1\91470e59713ae8dba0da4c8a50c2a4e4f99608a1
+\
+,项目源码/doulai/src/components/Title.vue,b\0\b0c1a4ff4322aefb3f7882b8dcef2a77980e49fa

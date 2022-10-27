@@ -60,6 +60,7 @@ import {Notify, Toast} from "vant";
 import router from "@/router";
 import Schedule from "@/components/Schedule.vue";
 import {reqAccurateSearch} from "@/api";
+import Tools from "@/Tools/Tools";
 
 export default defineComponent({
   name: "UploadSongs",
@@ -92,25 +93,21 @@ export default defineComponent({
        fileName.value = "";
        data.value = null;
        duration.value = "";
-       isDisabled.value = false;
+       isDisabled.value = true;
      }
 
      const afterRead = (file: any): void => {
+       //检查是否为音频文件
+       if (!Tools.fileType(file)) {
+        clr();
+        return;
+       }
+       console.log(file);
        data.value = file.file;
-       //去掉特殊关键字
-       songName.value = checkUpKeyWork(data.value.name);
+       songName.value = Tools.checkUpKeyWork(data.value.name);  //  去掉特殊关键字
        fileName.value = `song_newList/${data.value.name}`;
-       getAudioTime();
+       getAudioTime(data.value);
      }
-
-
-     //去掉特殊关键字
-    const checkUpKeyWork = (value: string): string => {
-      value = value.replace(".mp3","");
-      value = value.replace(".flac","");
-      value = value.replace(","," ");
-      return value.replace("."," ");
-    }
 
     //监听
      watch(
@@ -122,23 +119,17 @@ export default defineComponent({
      )
 
      //获取音频文件的长度
-     const getAudioTime = (): void => {
-       let url = URL.createObjectURL(data.value);
+     const getAudioTime = (file: any): void => {
+       let url = URL.createObjectURL(file);
        let audioElement = new Audio(url);
        audioElement.addEventListener("loadedmetadata", function () {
          let dur;
          dur = (audioElement.duration/60); //3.6
          let time = Math.round((dur - Math.floor(dur)) * 60);
-         duration.value = addZero(Math.floor(dur)) + ":" + addZero(time);
+         duration.value = Tools.addZero(Math.floor(dur)) + ":" + Tools.addZero(time);
        });
      }
-     const addZero = (i: number): string => {
-       if (i <10) {
-         return "0" + i;
-       } else {
-         return ""+i;
-       }
-     }
+
 
      //上传
      const updata = async (): Promise<void> => {

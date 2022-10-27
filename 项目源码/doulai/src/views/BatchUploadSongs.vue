@@ -21,7 +21,7 @@
           v-show="isShowUploaderButton">
         <van-button icon="points" type="primary">批量选择文件</van-button>
       </van-uploader>
-      <van-button icon="guide-o" plain hairline type="success" @click="upload" v-show="isShowSendButton">提交</van-button>
+      <van-button icon="guide-o" plain hairline type="success" @click="upload" v-show="!isShowUploaderButton">提交</van-button>
     </div>
   </div>
 </template>
@@ -30,6 +30,7 @@
 import {defineComponent, ref, Ref} from "vue";
 import Title from "@/components/Title.vue";
 import UploadSongs from "@/components/UploadSongs.vue";
+import Tools from "@/Tools/Tools";
 
 export default defineComponent({
   name: "BatchUploadSongs",
@@ -42,11 +43,18 @@ export default defineComponent({
 
     //显示
     let isShowUploaderButton: Ref<boolean> = ref(true);
-    let isShowSendButton: Ref<boolean> = ref(true);
 
     const afterRead = (file: any): void => {
+      if (file.length === undefined) file = [file];
       dataList.value = [...file];
       isShowUploaderButton.value = false;
+      file.forEach((i: any) => {
+        //检查是否为音频文件
+        if (!Tools.fileType(i)) {
+          dataList.value = [];
+          isShowUploaderButton.value = true;
+        }
+      })
     }
 
     //调用子组件上传
@@ -54,11 +62,10 @@ export default defineComponent({
       UploadSongs.value.forEach((i: any) => {
         i.upLoad();
       });
-      isShowSendButton.value = false
     }
 
     return {
-      dataList,UploadSongs,isShowUploaderButton,isShowSendButton,
+      dataList,UploadSongs,isShowUploaderButton,
       afterRead,upload,
     }
   }
