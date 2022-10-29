@@ -3,7 +3,9 @@ com\doze\pojo\MySongList.class
 com\doze\pojo\Search.class
 com\doze\controller\Doze.class
 com\doze\mapper\DozeMapper.class
+com\doze\lib\MyLog$LogThread.class
 com\doze\pojo\Search_content.class
+com\doze\lib\MyLog.class
 com\doze\pojo\ReqSong.class
 com\doze\pojo\RequestSong.class
 com\doze\pojo\User.class

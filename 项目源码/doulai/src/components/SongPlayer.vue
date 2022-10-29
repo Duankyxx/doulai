@@ -15,7 +15,7 @@
       <!--歌名-->
       <div id="SongName">
         <a v-if="isLoad" class="font_black">
-          <SongName v-model:songname="store.state.nowPlaySong.song_name" width="150px" height="21px"></SongName>
+          {{store.state.nowPlaySong.song_name}}
         </a>
       </div>
       <!--当前播放列表-->

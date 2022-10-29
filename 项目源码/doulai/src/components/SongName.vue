@@ -27,8 +27,6 @@ export default defineComponent({
     let songnameElemnet: Ref<HTMLElement | null> = ref(null);
 
     onMounted(() => {
-      console.log(boxElement.value!.offsetWidth);
-      console.log(songnameElemnet.value!.offsetWidth);
       if (boxElement.value!.offsetWidth < songnameElemnet.value!.offsetWidth) {
         //符合添加动画条件animation: zom 10s cubic-bezier(0.69, -0.15, 0.43, 1.13) 1s infinite alternate;
         isCenter.value = "left";
