@@ -133,6 +133,7 @@ export default defineComponent({
       const song_list: Search = {
         id: 0,
         song_name: songName.value,
+        duration: "",
         creator: store.state.User.username,
         song_type: pickerIndex.value,
         uid: store.state.User.id,

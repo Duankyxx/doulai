@@ -5,7 +5,12 @@
 
       <!--左-->
       <div id="left">
-        <p>{{i.song_name}}</p>
+        <p>
+          <SongName v-model:songname="i.song_name" width="100%" height="21px"></SongName>
+        </p>
+        <div id="bottom">
+          时长:{{i.duration}}
+        </div>
       </div>
 
       <!--右-->
@@ -24,14 +29,14 @@ import {defineComponent, ref, Ref} from "vue";
 import Search from "@/Interface/Search";
 import PopUpSoundQuality from "@/components/PopUpSoundQuality.vue";
 import Loading from "@/components/Loading.vue";
+import SongName from "@/components/SongName.vue";
 
 export default defineComponent({
   name: "SongList",
-  components: {Loading, PopUpSoundQuality},
+  components: {SongName, Loading, PopUpSoundQuality},
   props: ["songList"],
   setup(props, content) {
-    let songList: Search = props.songList;
-    console.log(songList);
+    let songList: Array<Search> = props.songList;
 
     //弹出层
     let popUpSoundQuality: Ref<any> = ref(null);
@@ -49,32 +54,47 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 #SongList {
-  outline: 1px solid red;
+  //outline: 1px solid red;
   padding: 10px 0;
   width: 100%;
+  z-index: 1;
 
   #item {
-    outline: 1px solid red;
+    //outline: 1px solid red;
+    background-color: #fff;
+    border-radius: 12px;
+    margin-bottom: 10px;
     width: calc(100% - 20px);
     height: 50px;
     padding: 5px 10px;
     display: flex;
 
     #left {
-      outline: 1px solid red;
+      //outline: 1px solid red;
       width: 60%;
       height: 100%;
 
       &>p {
-        outline: 1px solid blueviolet;
+        //outline: 1px solid blueviolet;
         width: calc(100% - 20px);
         padding: 0 10px;
         height: 40%;
-        overflow: hidden;
+        //overflow: hidden;
+      }
+
+      &>#bottom {
+        //background-color: pink;
+        //outline: 1px solid blue;
+        border-top: 1px solid rgba(128, 128, 128, 0.3);
+        padding: 0 10px;
+        height: 60%;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
       }
     }
     #right {
-      outline: 1px solid blue;
+      //outline: 1px solid blue;
       width: 40%;
       height: 100%;
       display: flex;

@@ -10,7 +10,9 @@
           <!--图片-->
           <div id="cardImg" class="flexCentered"><img alt="" src="../image/cover.jpeg"></div>
           <!--歌名-->
-          <div id="cardSongName" class="font_black">{{i.song_name}}</div>
+          <div id="cardSongName" class="font_black">
+            <SongName :songname="i.song_name" width="100%" height="15px"></SongName>
+          </div>
         </div>
 
         <!--加载层-->
@@ -32,10 +34,11 @@ import Search from "@/Interface/Search";
 import PopUpSoundQuality from "@/components/PopUpSoundQuality.vue";
 import Loading from "@/components/Loading.vue";
 import store from "@/store";
+import SongName from "@/components/SongName.vue";
 
 export default defineComponent({
   name: "RecommendedToday",
-  components: {Loading, PopUpSoundQuality},
+  components: {SongName, Loading, PopUpSoundQuality},
   setup() {
     //加载层
     store.state.isLoading.RecommendedToday = false;

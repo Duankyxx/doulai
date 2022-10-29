@@ -14,7 +14,9 @@
       </div>
       <!--歌名-->
       <div id="SongName">
-        <a v-if="isLoad" class="font_black">{{store.state.nowPlaySong.song_name}}</a>
+        <a v-if="isLoad" class="font_black">
+          <SongName v-model:songname="store.state.nowPlaySong.song_name" width="150px" height="21px"></SongName>
+        </a>
       </div>
       <!--当前播放列表-->
       <div id="songPlayList" @click="showList">
@@ -41,10 +43,11 @@ import ConductList from "@/components/ConductList.vue";
 import Search from "@/Interface/Search";
 import { Toast } from 'vant';
 import 'vant/es/toast/style';
+import SongName from "@/components/SongName.vue";
 
 export default defineComponent({
   name: "SongPlayer",
-  components: {ConductList},
+  components: {SongName, ConductList},
   props: ['bottom'],
   setup() {
     //绑定元素

@@ -66,6 +66,12 @@ export default defineComponent({
   name: "UploadSongs",
   components: {Schedule, Loading, Title},
   setup() {
+    //检查登录状态
+    if (!store.state.isLogin) {
+      Notify({ type: 'primary', message: '请先登录!' });
+      router.push("/login");
+    }
+
     //音质选择
     const columns = ["标准","高品质"];
     let isShowOverlay: Ref<boolean> = ref(false);
@@ -74,11 +80,6 @@ export default defineComponent({
     const onConfirm = (value: string, index: number): void => {
       pickerValue.value = value;
       pickerIndex.value = index;
-    }
-    //检查登录状态
-    if (store.state.User === undefined) {
-      Notify({ type: 'primary', message: '请先登录!' });
-      router.push("/login");
     }
 
      //文件读取完成后
@@ -146,6 +147,7 @@ export default defineComponent({
        const song_list: Search = {
          id: 0,
          song_name: songName.value,
+         duration: '',
          creator: store.state.User.username,
          song_type: pickerIndex.value,
          uid: store.state.User.id,

@@ -1,4 +1,5 @@
 com\doze\controller\GetMapper.class
+com\doze\pojo\MySongList.class
 com\doze\pojo\Search.class
 com\doze\controller\Doze.class
 com\doze\mapper\DozeMapper.class

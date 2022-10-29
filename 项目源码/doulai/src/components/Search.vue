@@ -11,7 +11,9 @@
         <div>
           <!--渲染搜索-->
           <div v-for="(i, index) in search_list" id="item">
-            <p @click="SachChange(i)">{{i.song_name}}</p>
+            <p @click="SachChange(i)">
+              <SongName :songname="i.song_name" width="100%" height="30px"></SongName>
+            </p>
             <van-divider id="item_divider" :style="{ color: '#1989fa', borderColor: '#1989fa'}"/>
           </div>
 
@@ -31,9 +33,11 @@ import store from "@/store";
 import {reqSearch} from '@/api';
 import Search from "@/Interface/Search";
 import * as _ from 'lodash';
+import SongName from "@/components/SongName.vue";
 
 export default defineComponent({
   name: "Search",
+  components: {SongName},
   setup() {
 
 
@@ -138,6 +142,8 @@ export default defineComponent({
   width: 100%;
   height: 60px;
   position: relative;
+  z-index: 9999;
+
   #Search {
     transition: 500ms;
     width: 100%;
@@ -173,7 +179,7 @@ export default defineComponent({
           line-height: 30px;
 
           &>p {
-            //outline: 1px solid pink;
+            //outline: 1px solid red;
             width: 100%;
             height: 30px;
             overflow: hidden;

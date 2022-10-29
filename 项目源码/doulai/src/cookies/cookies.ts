@@ -33,23 +33,21 @@ export const getAccount = (): Promise<any> => {
     });
 }
 //异步登录
-export const loginAccount = (): void => {
-    getAccount().then((res: User) => {
-        reqLogin({
-            id: 0,
-            username: res.username,
-            password: res.password,
-            sex: 0,
-        }).then((rs) => {
-            if (rs === "") {
-                Toast.fail('请重新登录!');
-                return;
-            }
-            //登录成功
-            store.state.isLogin = true;
-            store.state.User = {...rs};
-        });
+export const loginAccount = async (): Promise<void> => {
+    let res: User = await getAccount();
+    let rs = await reqLogin({
+        id: 0,
+        username: res.username,
+        password: res.password,
+        sex: 0,
     });
+    if (rs === "") {
+        Toast.fail('请重新登录!');
+        return;
+    }
+    //登录成功
+    store.state.isLogin = true;
+    store.state.User = {...rs};
 }
 //退出登录
 export const signOut = (): void => {

@@ -30,9 +30,12 @@
     <select id="login" parameterType="com.doze.pojo.User" resultType="com.doze.pojo.User">
         select * from doulai.user where username=#{username} and password=#{password}
     </select>
-    <!--查询当前用户已发布的歌曲   List<Search> getMySongs(int id);-->
-    <select id="getMySongs" parameterType="com.doze.pojo.User" resultType="com.doze.pojo.Search">
-        select * from doulai.song_list where uid=#{id}
+    <!--查询当前用户已发布的歌曲  Integer getMySongsNum(int id);   List<Search> getMySongs(int id);-->
+    <select id="getMySongsNum" resultType="java.lang.Integer">
+        select count(*) from doulai.song_list where uid=#{user_id};
+    </select>
+    <select id="getMySongs" resultType="com.doze.pojo.Search">
+        select * from doulai.song_list where uid=#{param1} order by id limit #{param2},20;
     </select>
     <!--上传song_list    void upLoadSongList(Search search);-->
     <insert id="upLoadSongList" parameterType="com.doze.pojo.Search">

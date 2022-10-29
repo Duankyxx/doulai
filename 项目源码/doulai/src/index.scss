@@ -1,5 +1,8 @@
 * {margin: 0;padding: 0;}
 
+//
+$BoxWidth: var(--width, 0px);
+
 //居中
 .flexCentered {
   display: flex;

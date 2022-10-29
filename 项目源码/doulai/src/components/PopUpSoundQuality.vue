@@ -2,7 +2,9 @@
   <!--音质弹出层-->
   <van-action-sheet v-model:show="actionShow" :closeable="false" title="选择音质">
     <div id="soundQuality">
-      <p id="title">{{song_name}}</p>
+      <p id="title">
+        <SongName v-if="refresh" v-model:songname="song_name" width="100%" height="21px" isCenter="center"></SongName>
+      </p>
       <div v-for="(i, index) in soundQuality" :key="i.id" class="font_black font_24" id="p">
         {{i.sound_quality}}<p @click="onSelect(i)">标准音质</p><a id="a" @click="addSongList(i)">加入播放列表</a>
       </div>
@@ -23,10 +25,14 @@ import { reqRequestSong } from "@/api";
 import Search from "@/Interface/Search";
 import { Toast } from 'vant';
 import 'vant/es/toast/style';
+import SongName from "@/components/SongName.vue";
 
 export default defineComponent({
   name: "PopUpSoundQuality",
+  components: {SongName},
   setup() {
+    //刷新
+    let refresh: Ref<boolean> = ref(false);
     //加载层
     store.state.isLoading.PopUpSoundQuality = false;
     //当前选中的歌曲的音质选项
@@ -38,6 +44,7 @@ export default defineComponent({
     let actionShow: Ref<boolean> = ref(false);
     //向父元素暴露方法
     const requestSong = (id: number,songName: string): void => {
+      refresh.value = false;
       song_name.value = songName;
       soundQuality.value = [];
       //弹出
@@ -48,6 +55,7 @@ export default defineComponent({
         soundQuality.value = [...res];
         //加载层
         store.state.isLoading.PopUpSoundQuality = false;
+        refresh.value = true;
       });
     }
 
@@ -76,7 +84,7 @@ export default defineComponent({
     }
 
     return {
-      soundQuality,actionShow,song_name,store,
+      soundQuality,actionShow,song_name,store,refresh,
       onSelect,requestSong,addSongList
     }
   }
@@ -84,6 +92,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "../index.scss";
+
 //音质弹出层
 #soundQuality {
   padding: 10px 10px 20px;

@@ -79,9 +79,11 @@ public class Doze {
 
     //请求该账户发布的歌曲
     @RequestMapping(value = "/getMySongs", method = RequestMethod.POST)
-    public List<Search> getMySongs(@RequestBody User user) throws IOException {
+    public MySongList getMySongs(@RequestBody MySongList user) throws IOException {
         DozeMapper mapper = GetMapper.getMapper();
-        return mapper.getMySongs(user.getId());
+        Integer mySongsNum = mapper.getMySongsNum(user.getUser_id());    //总数
+        List<Search> mySongs = mapper.getMySongs(user.getUser_id(), user.getCurrentPage()*20);    //歌曲
+        return new MySongList(user.getUser_id(), mySongsNum, 0, mySongs);
     }
 
     //上传song_list

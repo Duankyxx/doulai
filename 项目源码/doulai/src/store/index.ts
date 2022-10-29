@@ -30,6 +30,7 @@ export default createStore({
     PlayerBottom: "70px",
 
     //登陆信息
+    isLoginWill: false,
     isLogin: false,
     User: any,
 

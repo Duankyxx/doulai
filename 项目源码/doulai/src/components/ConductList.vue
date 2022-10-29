@@ -12,7 +12,9 @@
         <!--文字-->
         <div id="text">
           <div id="text_font">
-            <div id="song_name">{{i.song_name}}</div>
+            <div id="song_name">
+              <SongName v-model:songname="i.song_name" width="100%" height="21px"></SongName>
+            </div>
             <div id="duration">{{i.duration}}</div>
           </div>
 
@@ -31,9 +33,11 @@
 import {defineComponent, ref, Ref, watch} from "vue";
 import store from "@/store";
 import Search from "@/Interface/Search";
+import SongName from "@/components/SongName.vue";
 
 export default defineComponent({
   name: "ConductList",
+  components: {SongName},
   setup() {
 
     //删除事件

@@ -1,7 +1,9 @@
 <template>
-  <router-view></router-view>
-  <!--播放器-->
-  <SongPlayer v-show="store.state.isShowPlayer" :bottom="store.state.PlayerBottom"></SongPlayer>
+  <div>
+    <router-view></router-view>
+      <!--播放器-->
+      <SongPlayer v-show="store.state.isShowPlayer" :bottom="store.state.PlayerBottom"></SongPlayer>
+  </div>
 </template>
 
 <script lang="ts">
@@ -15,7 +17,11 @@ export default defineComponent({
   components: {SongPlayer},
   setup() {
     store.state.nowPlaySongList.splice(0, 1);
-    loginAccount();
+    const login = async (): Promise<void> => {
+      await loginAccount();
+    }
+
+    login();
     return {
       store
     }

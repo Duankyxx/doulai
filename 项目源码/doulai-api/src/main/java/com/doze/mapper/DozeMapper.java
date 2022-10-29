@@ -1,5 +1,6 @@
 package com.doze.mapper;
 
+import com.doze.pojo.MySongList;
 import com.doze.pojo.ReqSong;
 import com.doze.pojo.Search;
 import com.doze.pojo.User;
@@ -23,8 +24,9 @@ public interface DozeMapper {
 
     User login(User user);
 
-    //查询当前用户已发布的歌曲
-    List<Search> getMySongs(int id);
+    //查询当前用户已发布的歌曲(分页)
+    Integer getMySongsNum(int id);
+    List<Search> getMySongs(int id, int page);
 
     //上传song_list
     void upLoadSongList(Search search);

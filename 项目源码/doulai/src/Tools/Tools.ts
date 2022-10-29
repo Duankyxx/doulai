@@ -1,4 +1,5 @@
 import {Toast} from "vant";
+import store from "@/store";
 
 export default class Tools {
 
