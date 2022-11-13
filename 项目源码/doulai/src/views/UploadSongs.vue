@@ -103,7 +103,6 @@ export default defineComponent({
         clr();
         return;
        }
-       console.log(file);
        data.value = file.file;
        songName.value = Tools.checkUpKeyWork(data.value.name);  //  去掉特殊关键字
        fileName.value = `song_newList/${data.value.name}`;

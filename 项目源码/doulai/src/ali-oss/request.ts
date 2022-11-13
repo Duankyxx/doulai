@@ -1,26 +1,16 @@
 //导入OSS
 import Search from "@/Interface/Search";
 import SoundQuality from "@/Interface/SoundQuality";
-import {reqUpLoadSongList, reqUpLoadSongListDetailed} from "@/api";
+import {reqGetSTS, reqUpLoadSongList, reqUpLoadSongListDetailed} from "@/api";
 import store from "@/store";
 import {Notify, Toast} from "vant";
 
 const OSS = require('ali-oss');
-//实例化OSS
-export const client = new OSS({
-    // yourRegion填写Bucket所在地域。以华东1（杭州）为例，yourRegion填写为oss-cn-hangzhou。
-    region: 'oss-cn-hangzhou',
-    // 从STS服务获取的临时访问密钥（AccessKey ID和AccessKey Secret）
-    accessKeyId: 'LTAI5tRAKF726nzND4gSzkix',
-    accessKeySecret: 'wsy0U5QTBASaQ2khxhmbQBLkVM2jFu',
-    // 填写Bucket名称。
-    bucket: 'udnsunusn'
-});
+
 //设置分片上传参数
 const options = {
     // 获取分片上传进度、断点和返回值。
     progress: (p: number) => {
-        // console.log("------p:",p);
         store.state.Schedule = Math.round((p * 100));
     },
     // 设置并发上传的分片数量。
@@ -30,6 +20,20 @@ const options = {
 };
 
 export async function uploadSongs(fileName: string, data: object, song_list: Search, song_list_detailed: SoundQuality) {
+    let STSToken = await reqGetSTS(store.state.User);
+    console.log("获取到STStoken");
+    const client = new OSS({
+        // yourRegion填写Bucket所在地域。以华东1（杭州）为例，yourRegion填写为oss-cn-hangzhou。
+        region: 'oss-cn-hangzhou',
+        // 从STS服务获取的临时访问密钥（AccessKey ID和AccessKey Secret）
+        accessKeyId: STSToken.credentials.accessKeyId,
+        accessKeySecret: STSToken.credentials.accessKeySecret,
+        //STSToken
+        stsToken: STSToken.credentials.securityToken,
+        // 填写Bucket名称。
+        bucket: 'udnsunusn'
+    });
+
     try {
         let result = await client.multipartUpload(fileName, data, {...options});          //AJAX
         let url = result.res.requestUrls[0];

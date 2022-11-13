@@ -1,8 +1,15 @@
 package com.doze.controller;
 
+import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.IAcsClient;
+import com.aliyuncs.auth.sts.AssumeRoleRequest;
+import com.aliyuncs.auth.sts.AssumeRoleResponse;
+import com.aliyuncs.exceptions.ClientException;
+import com.aliyuncs.profile.DefaultProfile;
 import com.doze.lib.MyLog;
 import com.doze.mapper.DozeMapper;
 import com.doze.pojo.*;
+import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -113,5 +120,33 @@ public class Doze {
         DozeMapper mapper = GetMapper.getMapper();
         mapper.upLoadSongListDetailed(reqSong);
         return true;
+    }
+
+    //获取阿里云上传STS
+    @RequestMapping(value = "/getSTS", method = RequestMethod.POST)
+    public String getSTS(@RequestBody User user) {
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI5tNsugLXceXPri8mDsU2", "cFiSVxuCk1bvyEiRPKX1wCqYFE8Mvj");
+        IAcsClient client = new DefaultAcsClient(profile);
+
+        //构造请求，设置参数。
+        AssumeRoleRequest request = new AssumeRoleRequest();
+        request.setRegionId("cn-hangzhou");
+        request.setRoleArn("acs:ram::1052147859501565:role/ramosstest");
+        request.setRoleSessionName("alice");
+
+        //发起请求，并得到响应。
+        String json = "";
+        try {
+            AssumeRoleResponse response = client.getAcsResponse(request);
+            json = new Gson().toJson(response);
+        } catch (ClientException e) {
+            myLog.info("----------------------------------------------------------->>>>>>", 0);
+            myLog.info("获取STS错误  -->  :  ErrCode:" + e.getErrCode(), 0);
+            myLog.info("获取STS错误  -->  ErrMsg:" + e.getErrMsg(), 0);
+            myLog.info("获取STS错误  -->  RequestId:" + e.getRequestId(), 0);
+            myLog.info("<<<<<<-----------------------------------------------------------", 0);
+        }
+        myLog.info("请求STSToken  -->  用户Id:" + user.getId(), 2);
+        return json;
     }
 }

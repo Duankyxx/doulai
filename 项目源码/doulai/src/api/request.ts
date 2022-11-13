@@ -2,14 +2,16 @@ import axios from "axios";
 import { Notify } from 'vant';
 import 'vant/es/notify/style';
 
+//服务器环境:http://120.25.127.13:8090/api
+//开发环境: http://127.0.0.1:8090/api
+export let baseURL = 'http://120.25.127.13:8090/api';
+
 //1.利用axios对象的方法create,去创建一个axios实例
 //2.requests就是axios,只不过稍微配置一下
 const requests = axios.create({
     //配置对象
     //基础路径，发请求的时候，路径当中会出现api
-    //服务器环境:http://120.25.127.13:8090/api
-    //开发环境: http://127.0.0.1:8090/api
-    baseURL:'http://120.25.127.13:8090/api',
+    baseURL:baseURL,
     //请求时间超过5秒
     timeout:5000
 });

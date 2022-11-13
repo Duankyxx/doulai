@@ -52,10 +52,9 @@
 <script lang="ts">
 import {defineComponent, ref, Ref, watch} from "vue";
 import store from "@/store";
-import {reqAccurateSearch, reqUpLoadSongList, reqUpLoadSongListDetailed} from "@/api";
+import {reqAccurateSearch, reqGetSTS, reqUpLoadSongList, reqUpLoadSongListDetailed} from "@/api";
 import Search from "@/Interface/Search";
 import SoundQuality from "@/Interface/SoundQuality";
-import {client} from "@/ali-oss/request";
 import Tools from "@/Tools/Tools";
 
 export default defineComponent({
@@ -165,6 +164,20 @@ export default defineComponent({
 
     //连接阿里云
     const aliOss = async (fileName: string, data: object, song_list: Search, song_list_detailed: SoundQuality): Promise<void> => {
+      let STSToken = await reqGetSTS(store.state.User);
+      const OSS = require('ali-oss');
+      const client = new OSS({
+        // yourRegion填写Bucket所在地域。以华东1（杭州）为例，yourRegion填写为oss-cn-hangzhou。
+        region: 'oss-cn-hangzhou',
+        // 从STS服务获取的临时访问密钥（AccessKey ID和AccessKey Secret）
+        accessKeyId: STSToken.credentials.accessKeyId,
+        accessKeySecret: STSToken.credentials.accessKeySecret,
+        //STSToken
+        stsToken: STSToken.credentials.securityToken,
+        // 填写Bucket名称。
+        bucket: 'udnsunusn'
+      });
+
       try {
         let result = await client.multipartUpload(fileName, data, {...options});          //AJAX
         let url = result.res.requestUrls[0];

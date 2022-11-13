@@ -1,8 +1,9 @@
-import requests from "@/api/request";
+import requests, {baseURL} from "@/api/request";
 import User from "@/Interface/User";
 import Search from "@/Interface/Search";
 import SoundQuality from "@/Interface/SoundQuality";
 import MySongList from "@/Interface/MySongList";
+import axios from "axios";
 
 export const reqTest = ()=>{
     //由于前面配置了基础路径，所以不用加/api
@@ -45,3 +46,8 @@ export const reqUpLoadSongList = (song_list: Search): Promise<any> => {
 export const reqUpLoadSongListDetailed = (song_list_detailed: SoundQuality): Promise<any> => {
     return requests({url:'/upLoadSongListDetailed',method:'post',data: song_list_detailed});
 }
+//获取STS令牌
+export const reqGetSTS = async (user: User): Promise<any> => {
+    return requests({url:'/getSTS',method:'post',data: user});
+}
+
