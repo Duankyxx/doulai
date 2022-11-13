@@ -125,7 +125,7 @@ public class Doze {
     //获取阿里云上传STS
     @RequestMapping(value = "/getSTS", method = RequestMethod.POST)
     public String getSTS(@RequestBody User user) {
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI5tNsugLXceXPri8mDsU2", "cFiSVxuCk1bvyEiRPKX1wCqYFE8Mvj");
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "XXX", "XXX");
         IAcsClient client = new DefaultAcsClient(profile);
 
         //构造请求，设置参数。
